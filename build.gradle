@@ -1,9 +1,10 @@
 apply plugin: "java"
+apply plugin: "maven"
 apply plugin: "idea"
 
-def description = "Log4J Appender using JDK 7's AsynchronousFileChannel"
-def group = "com.jbrisbin.async"
-def version = "0.1.0"
+project.description = "Log4J Appender using JDK 7's AsynchronousFileChannel"
+project.group = "com.jbrisbin.async"
+project.version = "0.1.0"
 
 project.sourceCompatibility = 7
 
