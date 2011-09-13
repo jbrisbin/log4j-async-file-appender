@@ -1,0 +1,37 @@
+apply plugin: "java"
+apply plugin: "idea"
+
+def description = "Log4J Appender using JDK 7's AsynchronousFileChannel"
+def group = "com.jbrisbin.async"
+def version = "0.1.0"
+
+project.sourceCompatibility = 7
+
+configurations {
+  all*.exclude group: "commons-logging"
+}
+
+repositories {
+  mavenLocal()
+  mavenCentral()
+}
+
+dependencies {
+  // Log4J
+  compile("log4j:log4j:1.2.16") {
+    exclude(group: "com.sun.jdmk", module: "jmxtools")
+    exclude(group: "com.sun.jmx", module: "jmxri")
+    exclude(group: "javax.jms", module: "jms")
+    exclude(group: "javax.mail", module: "mail")
+  }
+
+  // Testing
+  testCompile "junit:junit:4.8.2"
+  testCompile "org.hamcrest:hamcrest-all:1.1"
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = "1.0-milestone-4"
+}
+
+idea.module.jdkName = "OpenJDK 1.7"
